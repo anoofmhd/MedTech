@@ -6,8 +6,8 @@ connectDb();
 
 const app = express();
 
-const port = 5500;
-//const port = process.env.PORT || 5500;
+//const port = 5500;
+const port = process.env.PORT || 5500;
 
 app.use(express.json());
 
