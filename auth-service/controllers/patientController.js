@@ -49,7 +49,7 @@ const loginPatient = asyncHandler( async (req, res) => {
         }
 
         //call patient service to get patient data
-        const response = await axios.post("http://localhost:4000/api/patients/login", {
+        const response = await axios.post("https://medtech-1-xn81.onrender.com/api/patients/login", {
             email
         });
 

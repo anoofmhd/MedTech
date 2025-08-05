@@ -7,7 +7,7 @@ const axios = require("axios");
 //getting details from patient-service
 const details = asyncHandler ( async (req, res) => {
     //res.json({ message: "Details from patient module !  "});
-    const BASE_URL = "http://localhost:4000/api/patients";
+    const BASE_URL = "https://medtech-1-xn81.onrender.com/api/patients";
 
     try {
     const response = await axios.get(BASE_URL);
