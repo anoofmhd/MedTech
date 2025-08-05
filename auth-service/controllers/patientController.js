@@ -10,13 +10,15 @@ const registerPatient = asyncHandler( async (req, res) => {
     try {
         const { email, name, age, address, phone, password } = req.body;
 
+        console.log("inside register patient");
+
          if( !email || !name || !age || !address || !phone || !password ) {
             res.status(400);
             console.log("All fields are required.");
             throw new Error(" All fields are mandatory !");
         }
 
-        const response = await axios.post("http://localhost:4000/api/patients", {
+        const response = await axios.post("https://medtech-1-xn81.onrender.com/api/patients", {
             email,
             name,
             age,
