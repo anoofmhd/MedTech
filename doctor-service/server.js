@@ -6,11 +6,13 @@ connectDb();
 
 const app = express();
 
-//const port = 5005;
-const port = process.env.PORT || 5005;
+const port = 5005;
+//const port = process.env.PORT || 5005;
 
 app.use(express.json());
 
-app.listen(port, '0.0.0.0', () => {
+app.use("/api", require("./routes/doctorRoutes"));
+
+app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
