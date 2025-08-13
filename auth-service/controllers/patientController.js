@@ -96,9 +96,11 @@ const loginPatient = asyncHandler( async (req, res) => {
         */
         );
         console.log(accessToken);
+        res.json({ message: "Login successfull", data: accessToken});
                   
     } catch (error) {
         console.log("Error while LOGIN........")
+        res.status(404).json({ message: "Email or password is invalid."});
     }
 
     
