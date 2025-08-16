@@ -35,4 +35,17 @@ const newDoctor = asyncHandler( async (req, res) => {
     console.log("Doctor Created successfully.")
 });
 
-module.exports = { newDoctor };
+//@desc one doctor
+//@route GET /api/doctors/:id
+//@access public
+const getDoctor = asyncHandler( async (req, res) => {
+    const doctor = await Doctor.findById(req.params.id);
+    if (!doctor) {
+       // res.status(404);
+       // return res.json({ message: "Patient not found" });
+        throw new Error("Doctor not found");
+    }
+    res.status(200).json(doctor);
+});
+
+module.exports = { newDoctor, getDoctor };
