@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use("/api", require("./routes/patientRoutes"));
 
-app.use(errorHandler);
+//app.use(errorHandler);
 
 app.listen(port,"0.0.0.0", () => {
     console.log(`Server running on port ${port}`);
