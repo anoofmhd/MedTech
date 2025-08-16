@@ -29,7 +29,8 @@ const getPatient = asyncHandler( async (req, res) => {
     if (!patient) {
        // res.status(404);
        // return res.json({ message: "Patient not found" });
-        throw new Error("Patient not found");
+       // throw new Error("Patient not found");
+       return res.status(404).json({ message: "Patient not found" });
     }
     res.status(200).json(patient);
 });
