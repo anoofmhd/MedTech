@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 //@route POST /api/register?role=patient
 //@access public
 const registerPatient = asyncHandler( async (req, res) => {
+    const role = "patient";
     try {
         const { email, name, age, address, phone, password } = req.body;
 
