@@ -25,7 +25,8 @@ const registerPatient = asyncHandler( async (req, res) => {
             age,
             address,
             phone,
-            password
+            password,
+            role: role,
         });
 
         res.status(201).json(response.data);
@@ -76,7 +77,8 @@ const loginPatient = asyncHandler( async (req, res) => {
                 name: patient.name,
                 age: patient.age,
                 address: patient.address,
-                phone: patient.phone
+                phone: patient.phone,
+                role: patient.role,
                 //id: patient._id,
                 
             },
