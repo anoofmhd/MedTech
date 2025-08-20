@@ -40,6 +40,7 @@ const getPatient = asyncHandler( async (req, res) => {
 //@route POST /api/patients
 //@access public
 const newPatient = asyncHandler( async (req, res) => {
+    const role = "patient";
     console.log("The request body is : ", req.body);
     const { email, name, age, address, phone, password } = req.body;
     if ( !email || !name || !age || !address || !phone || !password ) {
@@ -56,7 +57,8 @@ const newPatient = asyncHandler( async (req, res) => {
         age,
         address,
         phone,
-        password: hashedPassword
+        password: hashedPassword,
+        role: role,
    });
     res.status(201).json(patient);
 });

@@ -25,6 +25,10 @@ const patientSchema = mongoose.Schema({
         type: String,
         required: [true, "Please enter the password"],
     },
+    role: {
+        type: String,
+        required: [true, "Please add the role of the user"],
+    }
 },
     {
         timestamps: true,
