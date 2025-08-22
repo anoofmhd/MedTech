@@ -52,7 +52,6 @@ const newPatient = asyncHandler( async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const patient = await Patient.create({
-        _id: patient._id, 
         email,
         name,
         age,
