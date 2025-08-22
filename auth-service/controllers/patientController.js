@@ -73,6 +73,7 @@ const loginPatient = asyncHandler( async (req, res) => {
         //res.json({ message: " Details are correct "});
         const accessToken = jwt.sign({
             patient: {
+                _id: patient._id, 
                 email: patient.email,
                 name: patient.name,
                 age: patient.age,
