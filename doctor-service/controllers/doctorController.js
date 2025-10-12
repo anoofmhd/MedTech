@@ -32,8 +32,8 @@ const newDoctor = asyncHandler( async (req, res) => {
         password: hashedPassword
    });
     res.status(201).json(doctor);
-    res.json({ message: "Doctor created successfully."});
-    console.log("Doctor Created successfully.")
+    //res.json({ message: "Doctor created successfully."});
+    //console.log("Doctor Created successfully.")
 });
 
 //@desc one doctor
