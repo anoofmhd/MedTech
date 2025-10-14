@@ -74,7 +74,7 @@ const loginDoctor = asyncHandler( async (req, res) => {
             process.env.ACCESS_TOKEN_SECRET,
             { expiresIn: "30m" },
         );
-        res.status(200).json({ accessToken });
+        res.status(200).json(accessToken);
 
         } else {
             console.log("Email or password is wrong.");
