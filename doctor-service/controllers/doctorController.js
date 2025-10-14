@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Doctor = require("../models/doctorModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 //@desc create new doctor
 //@route POST /api/doctor
@@ -47,4 +48,43 @@ const getDoctor = asyncHandler( async (req, res) => {
     res.status(200).json(doctor);
 });
 
-module.exports = { newDoctor, getDoctor };
+//@desc login doctor
+//@route GET /api/doctorLogin
+//@access public
+const loginDoctor = asyncHandler( async (req, res) => {
+    //console.log("Inside doctor login.");
+    const { email, password } = req.body;
+    try {
+        if ( !email || !password ) {
+            //res.status(400);
+            //throw new Error("All fields are mandatory !.");
+            res.json({ message: "All fields are mandatory."});
+        }
+        const doctor = await Doctor.findOne({ email });
+        if (doctor && (await bcrypt.compare(password, doctor.password))) {
+            //res.json({ message: "Details are correct."});
+            const accessToken = jwt.sign({
+                doctor: {
+                    username: doctor.username,
+                    email: doctor.email,
+                    id: doctor.id
+                },
+            },
+
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: "30m" },
+        );
+        res.status(200).json({ accessToken });
+
+        } else {
+            console.log("Email or password is wrong.");
+            res.json("Email or password is wrong.");
+        }
+
+
+    } catch (error) {
+        console.log("Error while Login");
+    }
+});
+
+module.exports = { newDoctor, getDoctor, loginDoctor };
