@@ -53,8 +53,9 @@ const getDoctor = asyncHandler( async (req, res) => {
 //@access public
 const loginDoctor = asyncHandler( async (req, res) => {
     //console.log("Inside doctor login.");
-    const { email, password } = req.body;
+    
     try {
+        const { email, password } = req.body;
         if ( !email || !password ) {
             //res.status(400);
             //throw new Error("All fields are mandatory !.");
