@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { registerReceptionist, loginReceptionist } = require("../controllers/receptionistController");
 const { registerPatient, loginPatient } = require("../controllers/patientController");
+const { newDoctor, doctorLogin } = require("../controllers/doctorController");
 
 //router.post("/register", registerReceptionist);
 router.post("/register", (req, res) => {
@@ -12,7 +13,8 @@ router.post("/register", (req, res) => {
         registerReceptionist(req, res);
 
     } else if (role === "doctor") {
-        res.json({ message: "Register Doctor"});
+        //res.json({ message: "Register Doctor"});
+        newDoctor(req, res);
     } else if (role === "patient") {
         //res.json({ message: " Register Patient "});
         registerPatient(req, res);
@@ -24,7 +26,7 @@ router.post("/login", (req, res) => {
     const role = req.query.role; //Gets role from URL like ?role=receptionist
 
     if (role == null) {
-        res.json({ message: "Please enter the role" });
+        //res.json({ message: "Please enter the role" });
     }
 
     if (role === "receptionist") {
@@ -32,7 +34,8 @@ router.post("/login", (req, res) => {
         loginReceptionist(req, res);
         
     } else if (role === "doctor") {
-        res.json({ message: "Login as doctor"});
+        //res.json({ message: "Login as doctor"});
+        doctorLogin(req, res);
     } else if(role === "patient") {
         loginPatient(req, res);
     }
